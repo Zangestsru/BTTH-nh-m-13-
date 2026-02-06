@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thêm sản phẩm mới vào cửa hàng">
+    <title>TechStore - Thêm Sản Phẩm Mới</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-6: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--gray-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--gray);
+            font-size: 1.125rem;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 3rem;
+        }
+
+        .form-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-section h2::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-size: 0.875rem;
+        }
+
+        .form-group label .required {
+            color: var(--error);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Icon Selector */
+        .icon-selector {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.75rem;
+        }
+
+        .icon-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            background: var(--white);
+            font-size: 1.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-option:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .icon-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Color Selector */
+        .color-selector {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.75rem;
+        }
+
+        .color-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: var(--dark);
+            box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--primary);
+        }
+
+        .color-option.gradient-1 { background: var(--gradient-1); }
+        .color-option.gradient-2 { background: var(--gradient-2); }
+        .color-option.gradient-3 { background: var(--gradient-3); }
+        .color-option.gradient-4 { background: var(--gradient-4); }
+        .color-option.gradient-5 { background: var(--gradient-5); }
+        .color-option.gradient-6 { background: var(--gradient-6); }
+
+        /* Badge Options */
+        .badge-options {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-option {
+            padding: 0.5rem 1.25rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 25px;
+            background: var(--white);
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .badge-option:hover {
+            border-color: var(--primary);
+        }
+
+        .badge-option.selected {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Preview Section */
+        .preview-section {
+            background: var(--gradient-1);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .preview-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .preview-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .preview-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .preview-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .preview-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-category {
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .preview-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .preview-info p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .preview-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .preview-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .preview-buy-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-1);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--gray-light);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        .toast.error {
+            background: var(--error);
+        }
+
+        /* Product List Section */
+        .products-list-section {
+            margin-top: 4rem;
+        }
+
+        .products-list-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-info p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .edit-btn {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .edit-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        .delete-btn:hover {
+            background: var(--error);
+            color: var(--white);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray);
+        }
+
+        .empty-state span {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-section {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .form-section,
+            .preview-section {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-container {
+            animation: fadeIn 0.6s ease;
+        }
+
+        .product-card {
+            animation: fadeIn 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TechStore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="index.html#features">Đặc Điểm</a></li>
+                <li><a href="index.html#products">Sản Phẩm</a></li>
+                <li><a href="add-product.html" class="active">Thêm Sản Phẩm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1>✨ Thêm Sản Phẩm Mới</h1>
+            <p>Điền thông tin sản phẩm và xem trước trước khi thêm vào danh sách</p>
+        </div>
+
+        <div class="form-container">
+            <!-- Form Section -->
+            <div class="form-section">
+                <h2>Thông Tin Sản Phẩm</h2>
+                
+                <form id="productForm">
+                    <div class="form-group">
+                        <label>Tên Sản Phẩm <span class="required">*</span></label>
+                        <input type="text" id="productName" placeholder="VD: Laptop Gaming Ultra" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Danh Mục <span class="required">*</span></label>
+                            <select id="productCategory" required>
+                                <option value="">Chọn danh mục</option>
+                                <option value="Smartphone">Smartphone</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Audio">Audio</option>
+                                <option value="Smartwatch">Smartwatch</option>
+                                <option value="Camera">Camera</option>
+                                <option value="Monitor">Monitor</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="Accessories">Phụ Kiện</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Giá (VNĐ) <span class="required">*</span></label>
+                            <input type="number" id="productPrice" placeholder="VD: 15990000" required min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mô Tả Sản Phẩm <span class="required">*</span></label>
+                        <textarea id="productDescription" placeholder="Nhập mô tả chi tiết về sản phẩm..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chọn Icon</label>
+                        <div class="icon-selector" id="iconSelector">
+                            <button type="button" class="icon-option selected" data-icon="📱">📱</button>
+                            <button type="button" class="icon-option" data-icon="💻">💻</button>
+                            <button type="button" class="icon-option" data-icon="🎧">🎧</button>
+                            <button type="button" class="icon-option" data-icon="⌚">⌚</button>
+                            <button type="button" class="icon-option" data-icon="📷">📷</button>
+                            <button type="button" class="icon-option" data-icon="🖥️">🖥️</button>
+                            <button type="button" class="icon-option" data-icon="📺">📺</button>
+                            <button type="button" class="icon-option" data-icon="🎮">🎮</button>
+                            <button type="button" class="icon-option" data-icon="🔊">🔊</button>
+                            <button type="button" class="icon-option" data-icon="⌨️">⌨️</button>
+                            <button type="button" class="icon-option" data-icon="🖱️">🖱️</button>
+                            <button type="button" class="icon-option" data-icon="💡">💡</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Màu Nền</label>
+                        <div class="color-selector" id="colorSelector">
+                            <button type="button" class="color-option gradient-1 selected" data-color="gradient-1"></button>
+                            <button type="button" class="color-option gradient-2" data-color="gradient-2"></button>
+                            <button type="button" class="color-option gradient-3" data-color="gradient-3"></button>
+                            <button type="button" class="color-option gradient-4" data-color="gradient-4"></button>
+                            <button type="button" class="color-option gradient-5" data-color="gradient-5"></button>
+                            <button type="button" class="color-option gradient-6" data-color="gradient-6"></button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nhãn Sản Phẩm</label>
+                        <div class="badge-options" id="badgeSelector">
+                            <button type="button" class="badge-option" data-badge="">Không có</button>
+                            <button type="button" class="badge-option selected" data-badge="HOT">HOT</button>
+                            <button type="button" class="badge-option" data-badge="NEW">NEW</button>
+                            <button type="button" class="badge-option" data-badge="-10%">-10%</button>
+                            <button type="button" class="badge-option" data-badge="-20%">-20%</button>
+                            <button type="button" class="badge-option" data-badge="-30%">-30%</button>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" id="resetBtn">🔄 Đặt Lại</button>
+                        <button type="submit" class="btn btn-primary">✅ Thêm Sản Phẩm</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <h2>👁️ Xem Trước Sản Phẩm</h2>
+                <div class="preview-card">
+                    <div class="preview-image" id="previewImage">
+                        <span class="preview-badge" id="previewBadge">HOT</span>
+                        <span id="previewIcon">📱</span>
+                    </div>
+                    <div class="preview-info">
+                        <div class="preview-category" id="previewCategory">Danh Mục</div>
+                        <h3 id="previewName">Tên Sản Phẩm</h3>
+                        <p id="previewDescription">Mô tả sản phẩm sẽ xuất hiện tại đây...</p>
+                        <div class="preview-footer">
+                            <div class="preview-price" id="previewPrice">0đ</div>
+                            <button class="preview-buy-btn">Mua Ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products List -->
+        <section class="products-list-section">
+            <h2>📦 Sản Phẩm Đã Thêm</h2>
+            <div class="products-grid" id="productsGrid">
+                <div class="empty-state" id="emptyState">
+                    <span>📭</span>
+                    <p>Chưa có sản phẩm nào được thêm</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span>✅</span>
+        <span id="toastMessage">Thêm sản phẩm thành công!</span>
+    </div>
+
+    <script>
+        // State
+        let selectedIcon = '📱';
+        let selectedColor = 'gradient-1';
+        let selectedBadge = 'HOT';
+        let products = JSON.parse(localStorage.getItem('techstore_products') || '[]');
+
+        // Color mapping
+        const colorStyles = {
+            'gradient-1': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'gradient-2': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'gradient-3': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'gradient-4': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'gradient-5': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+            'gradient-6': 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)'
+        };
+
+        // Elements
+        const productForm = document.getElementById('productForm');
+        const productName = document.getElementById('productName');
+        const productCategory = document.getElementById('productCategory');
+        const productPrice = document.getElementById('productPrice');
+        const productDescription = document.getElementById('productDescription');
+        const iconSelector = document.getElementById('iconSelector');
+        const colorSelector = document.getElementById('colorSelector');
+        const badgeSelector = document.getElementById('badgeSelector');
+        const previewImage = document.getElementById('previewImage');
+        const previewIcon = document.getElementById('previewIcon');
+        const previewBadge = document.getElementById('previewBadge');
+        const previewName = document.getElementById('previewName');
+        const previewCategory = document.getElementById('previewCategory');
+        const previewPrice = document.getElementById('previewPrice');
+        const previewDescription = document.getElementById('previewDescription');
+        const productsGrid = document.getElementById('productsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Format price
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+        }
+
+        // Update preview
+        function updatePreview() {
+            previewName.textContent = productName.value || 'Tên Sản Phẩm';
+            previewCategory.textContent = productCategory.value || 'Danh Mục';
+            previewDescription.textContent = productDescription.value || 'Mô tả sản phẩm sẽ xuất hiện tại đây...';
+            previewPrice.textContent = productPrice.value ? formatPrice(productPrice.value) : '0đ';
+            previewIcon.textContent = selectedIcon;
+            previewImage.style.background = colorStyles[selectedColor];
+            
+            if (selectedBadge) {
+                previewBadge.textContent = selectedBadge;
+                previewBadge.style.display = 'block';
+            } else {
+                previewBadge.style.display = 'none';
+            }
+        }
+
+        // Icon selector
+        iconSelector.addEventListener('click', (e) => {
+            if (e.target.classList.contains('icon-option')) {
+                document.querySelectorAll('.icon-option').forEach(opt => opt.classList.remove('selected'));
+                e.target.classList.add('selected');
+                selectedIcon = e.target.dataset.icon;
+                updatePreview();
+            }
+        });
+
+        // Color selector
+        colorSelector.addEventListener('click', (e) => {
+            if (e.target.classList.contains('color-option')) {
+                document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                e.target.classList.add('selected');
+                selectedColor = e.target.dataset.color;
+                updatePreview();
+            }
+        });
+
+        // Badge selector
+        badgeSelector.addEventListener('click', (e) => {
+            if (e.target.classList.contains('badge-option')) {
+                document.querySelectorAll('.badge-option').forEach(opt => opt.classList.remove('selected'));
+                e.target.classList.add('selected');
+                selectedBadge = e.target.dataset.badge;
+                updatePreview();
+            }
+        });
+
+        // Live preview updates
+        productName.addEventListener('input', updatePreview);
+        productCategory.addEventListener('change', updatePreview);
+        productPrice.addEventListener('input', updatePreview);
+        productDescription.addEventListener('input', updatePreview);
+
+        // Show toast
+        function showToast(message, isError = false) {
+            toastMessage.textContent = message;
+            toast.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Render products
+        function renderProducts() {
+            if (products.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            const productCards = products.map((product, index) => `
+                <div class="product-card" data-index="${index}">
+                    <div class="product-image" style="background: ${colorStyles[product.color]}">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        ${product.icon}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">${formatPrice(product.price)}</div>
+                            <div class="product-actions">
+                                <button class="edit-btn" onclick="editProduct(${product.id})" title="Chỉnh sửa">✏️</button>
+                                <button class="delete-btn" onclick="deleteProduct(${index})" title="Xóa sản phẩm">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            productsGrid.innerHTML = productCards + '<div class="empty-state" id="emptyState" style="display: none;"><span>📭</span><p>Chưa có sản phẩm nào được thêm</p></div>';
+        }
+
+        // Edit product
+        function editProduct(productId) {
+            window.location.href = `edit-product.html?id=${productId}`;
+        }
+
+        // Delete product
+        function deleteProduct(index) {
+            if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                products.splice(index, 1);
+                localStorage.setItem('techstore_products', JSON.stringify(products));
+                renderProducts();
+                showToast('Đã xóa sản phẩm!', true);
+            }
+        }
+
+        // Reset form
+        function resetForm() {
+            productForm.reset();
+            
+            // Reset selectors
+            document.querySelectorAll('.icon-option').forEach((opt, i) => {
+                opt.classList.toggle('selected', i === 0);
+            });
+            document.querySelectorAll('.color-option').forEach((opt, i) => {
+                opt.classList.toggle('selected', i === 0);
+            });
+            document.querySelectorAll('.badge-option').forEach((opt, i) => {
+                opt.classList.toggle('selected', i === 1);
+            });
+
+            selectedIcon = '📱';
+            selectedColor = 'gradient-1';
+            selectedBadge = 'HOT';
+            
+            updatePreview();
+        }
+
+        resetBtn.addEventListener('click', resetForm);
+
+        // Form submit
+        productForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate
+            if (!productName.value.trim()) {
+                showToast('Vui lòng nhập tên sản phẩm!', true);
+                productName.focus();
+                return;
+            }
+
+            if (!productCategory.value) {
+                showToast('Vui lòng chọn danh mục!', true);
+                productCategory.focus();
+                return;
+            }
+
+            if (!productPrice.value || productPrice.value <= 0) {
+                showToast('Vui lòng nhập giá hợp lệ!', true);
+                productPrice.focus();
+                return;
+            }
+
+            if (!productDescription.value.trim()) {
+                showToast('Vui lòng nhập mô tả sản phẩm!', true);
+                productDescription.focus();
+                return;
+            }
+
+            // Add product
+            const newProduct = {
+                id: Date.now(),
+                name: productName.value.trim(),
+                category: productCategory.value,
+                price: parseInt(productPrice.value),
+                description: productDescription.value.trim(),
+                icon: selectedIcon,
+                color: selectedColor,
+                badge: selectedBadge
+            };
+
+            products.unshift(newProduct);
+            localStorage.setItem('techstore_products', JSON.stringify(products));
+            
+            renderProducts();
+            resetForm();
+            showToast('🎉 Thêm sản phẩm thành công!');
+
+            // Scroll to products list
+            document.querySelector('.products-list-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Initialize
+        updatePreview();
+        renderProducts();
+    </script>
+</body>
+</html>
