@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cửa hàng sản phẩm chất lượng cao với giá tốt nhất">
-    <title>Tech Store - Sản Phẩm Công Nghệ Cao Cấp</title>
+    <meta name="description" content="Cửa hàng sản phẩm công nghệ cao cấp - Uy tín, chất lượng, giá tốt nhất">
+    <title>TechStore Premium - Công Nghệ Đỉnh Cao Trong Tầm Tay</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,27 +19,72 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
             --secondary: #ec4899;
+            --accent: #06b6d4;
             --dark: #0f172a;
             --dark-light: #1e293b;
+            --dark-lighter: #334155;
             --gray: #64748b;
-            --gray-light: #f1f5f9;
+            --gray-light: #f8fafc;
             --white: #ffffff;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+            /* Premium Gradients */
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-cool: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --gradient-blue: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.2);
+            --glow: 0 0 30px rgba(139, 92, 246, 0.6);
+            --glow-pink: 0 0 40px rgba(236, 72, 153, 0.7);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background: var(--white);
+            background: var(--gray-light);
             overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-purple);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-secondary);
         }
 
         /* Header */
@@ -45,69 +93,114 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.75rem;
-            font-weight: 800;
-            background: var(--gradient-1);
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient-purple);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            padding: 0.5rem 0;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s ease;
+            height: 3px;
+            background: var(--gradient-purple);
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::before {
             width: 100%;
         }
 
         .nav-links a:hover {
             color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gradient-secondary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            animation: pulse 2s ease-in-out infinite;
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            min-height: 90vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f857a6 100%);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -115,87 +208,250 @@
             justify-content: center;
         }
 
-        .hero::before {
-            content: '';
+        .hero-shapes {
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
         }
 
-        .hero::after {
-            content: '';
+        .shape {
             position: absolute;
-            bottom: -30%;
-            left: -5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 15s ease-in-out infinite, float 10s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
             width: 400px;
             height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            top: 50%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            left: 40%;
+            animation-delay: 4s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-30px) translateX(20px); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(30px, -30px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(-20px, -50px) rotate(-5deg);
+            }
+
+            75% {
+                transform: translate(20px, -30px) rotate(3deg);
+            }
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+            }
         }
 
         .hero-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
             color: var(--white);
             position: relative;
-            z-index: 1;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
+            font-size: 5.5rem;
+            font-weight: 900;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: fadeInUp 0.8s ease;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             opacity: 0.95;
-            animation: fadeInUp 0.8s ease 0.2s both;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
         .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3.5rem;
             background: var(--white);
             color: var(--primary);
             text-decoration: none;
             font-weight: 700;
+            font-size: 1.125rem;
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease 0.4s both;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--white);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--white);
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+            margin-top: -50px;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 30px;
+            box-shadow: var(--shadow-xl);
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            color: var(--gray);
+            font-weight: 600;
         }
 
         /* Features Section */
@@ -211,70 +467,98 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         .section-title h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
             color: var(--dark);
+            letter-spacing: -1px;
         }
 
         .section-title p {
-            font-size: 1.25rem;
+            font-size: 1.375rem;
             color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .feature-card {
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
+            padding: 3rem;
+            border-radius: 25px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
         }
 
         .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: var(--gradient-1);
-            border-radius: 20px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 2rem;
+            background: var(--gradient-primary);
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            transition: all 0.4s ease;
         }
 
         .feature-card:nth-child(2) .feature-icon {
-            background: var(--gradient-2);
+            background: var(--gradient-secondary);
         }
 
         .feature-card:nth-child(3) .feature-icon {
-            background: var(--gradient-3);
+            background: var(--gradient-tertiary);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg);
+            box-shadow: var(--glow);
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
             color: var(--dark);
         }
 
         .feature-card p {
             color: var(--gray);
-            line-height: 1.8;
+            line-height: 1.9;
+            font-size: 1.0625rem;
         }
 
         /* Products Section */
@@ -285,36 +569,41 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
         }
 
         .product-image {
             width: 100%;
-            height: 300px;
+            height: 320px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--white);
             position: relative;
             overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
         }
 
         .product-card:nth-child(2) .product-image {
@@ -343,35 +632,38 @@
             right: 20px;
             background: var(--white);
             color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 700;
+            padding: 0.625rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 800;
             font-size: 0.875rem;
+            box-shadow: var(--shadow);
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .product-info {
-            padding: 2rem;
+            padding: 2.5rem;
         }
 
         .product-category {
             color: var(--primary);
             font-size: 0.875rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.75rem;
         }
 
         .product-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
             color: var(--dark);
         }
 
         .product-info p {
             color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 1.0625rem;
         }
 
         .product-footer {
@@ -381,80 +673,174 @@
         }
 
         .product-price {
-            font-size: 2rem;
-            font-weight: 800;
-            background: var(--gradient-1);
+            font-size: 2.25rem;
+            font-weight: 900;
+            background: var(--gradient-purple);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .buy-button {
-            padding: 0.875rem 2rem;
-            background: var(--gradient-1);
+            padding: 1rem 2.5rem;
+            background: var(--gradient-purple);
             color: var(--white);
             border: none;
             border-radius: 50px;
             font-weight: 700;
+            font-size: 1.0625rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
 
         .buy-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+            box-shadow: var(--glow);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--dark);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.9375rem;
+            opacity: 0.7;
         }
 
         /* CTA Section */
         .cta-section {
             padding: 6rem 2rem;
-            background: var(--dark);
+            background: var(--gradient-primary);
             color: var(--white);
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 50%;
-        }
-
+        .cta-section::before,
         .cta-section::after {
             content: '';
             position: absolute;
-            bottom: -50%;
-            right: -10%;
+            border-radius: 50%;
+        }
+
+        .cta-section::before {
+            top: -30%;
+            left: -10%;
             width: 500px;
             height: 500px;
-            background: rgba(236, 72, 153, 0.1);
-            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            bottom: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite reverse;
         }
 
         .cta-content {
             position: relative;
             z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .cta-section h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
         }
 
         .cta-section p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
+            font-size: 1.375rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.8;
         }
 
-        .cta-buttons {
+        .cta-buttons-bottom {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
@@ -462,36 +848,39 @@
         }
 
         .cta-primary {
-            padding: 1.2rem 3rem;
-            background: var(--gradient-1);
-            color: var(--white);
+            padding: 1.25rem 3.5rem;
+            background: var(--white);
+            color: var(--primary);
             text-decoration: none;
             font-weight: 700;
+            font-size: 1.125rem;
             border-radius: 50px;
             transition: all 0.3s ease;
             display: inline-block;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
         .cta-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .cta-secondary {
-            padding: 1.2rem 3rem;
+        .cta-secondary-btn {
+            padding: 1.25rem 3.5rem;
             background: transparent;
             color: var(--white);
             text-decoration: none;
             font-weight: 700;
+            font-size: 1.125rem;
             border-radius: 50px;
-            border: 2px solid var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.6);
             transition: all 0.3s ease;
             display: inline-block;
         }
 
-        .cta-secondary:hover {
-            background: var(--white);
-            color: var(--dark);
+        .cta-secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--white);
             transform: translateY(-5px);
         }
 
@@ -499,7 +888,7 @@
         footer {
             background: var(--dark-light);
             color: var(--white);
-            padding: 4rem 2rem 2rem;
+            padding: 5rem 2rem 2rem;
         }
 
         .footer-content {
@@ -507,14 +896,19 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 4rem;
             margin-bottom: 3rem;
         }
 
         .footer-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+            font-size: 1.375rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.9;
         }
 
         .footer-section ul {
@@ -522,18 +916,20 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .footer-section a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .footer-section a:hover {
             color: var(--white);
             padding-left: 5px;
+            transform: translateX(5px);
         }
 
         .footer-bottom {
@@ -548,7 +944,8 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+                letter-spacing: -1px;
             }
 
             .hero p {
@@ -556,62 +953,132 @@
             }
 
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .nav-links {
                 display: none;
             }
 
-            .products-grid {
+            .products-grid,
+            .features-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cta-section h2 {
-                font-size: 2rem;
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
 
-            .cta-buttons {
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons,
+            .cta-buttons-bottom {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .shape {
+                display: none;
             }
         }
 
         /* Animations */
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
+                transform: scale(1);
             }
+
             50% {
                 opacity: 0.8;
+                transform: scale(1.05);
             }
         }
 
-        .product-badge {
-            animation: pulse 2s ease-in-out infinite;
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">TechStore</div>
+            <div class="logo">TechStore ✨</div>
             <ul class="nav-links">
                 <li><a href="#home">Trang Chủ</a></li>
                 <li><a href="#features">Đặc Điểm</a></li>
                 <li><a href="#products">Sản Phẩm</a></li>
+                <li><a href="#testimonials">Đánh Giá</a></li>
                 <li><a href="#contact">Liên Hệ</a></li>
+                <li class="cart-icon">
+                    🛒
+                    <span class="cart-badge">3</span>
+                </li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
         <div class="hero-content">
-            <h1>Công Nghệ Tương Lai<br>Trong Tầm Tay Bạn</h1>
-            <p>Khám phá bộ sưu tập sản phẩm công nghệ cao cấp với giá tốt nhất thị trường</p>
-            <a href="#products" class="cta-button">Khám Phá Ngay</a>
+            <div class="hero-badge">✨ Sản Phẩm Mới 2026</div>
+            <h1>
+                Công Nghệ Tương Lai
+                <span>Trong Tầm Tay Bạn</span>
+            </h1>
+            <p>Khám phá bộ sưu tập sản phẩm công nghệ cao cấp với thiết kế hiện đại, hiệu năng đỉnh cao và giá tốt nhất
+                thị trường</p>
+            <div class="cta-buttons">
+                <a href="#products" class="cta-button">
+                    🚀 Khám Phá Ngay
+                </a>
+                <a href="#contact" class="cta-button cta-button-secondary">
+                    💬 Liên Hệ Tư Vấn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Khách Hàng</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Sản Phẩm</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Hài Lòng</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Hỗ Trợ</div>
+            </div>
         </div>
     </section>
 
@@ -620,23 +1087,26 @@
         <div class="container">
             <div class="section-title">
                 <h2>Tại Sao Chọn Chúng Tôi</h2>
-                <p>Cam kết mang đến trải nghiệm mua sắm tốt nhất</p>
+                <p>Cam kết mang đến trải nghiệm mua sắm tốt nhất với dịch vụ chuyên nghiệp và tận tâm</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🚚</div>
-                    <h3>Giao Hàng Nhanh</h3>
-                    <p>Miễn phí vận chuyển cho đơn hàng trên 500.000đ. Giao hàng nhanh chóng trong 24h.</p>
+                    <h3>Giao Hàng Siêu Tốc</h3>
+                    <p>Miễn phí vận chuyển cho đơn hàng trên 500.000đ. Giao hàng nhanh chóng trong 24h tại Hà Nội và
+                        TP.HCM, 48h toàn quốc.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💎</div>
-                    <h3>Chất Lượng Cao</h3>
-                    <p>100% sản phẩm chính hãng, cam kết chất lượng và bảo hành đầy đủ.</p>
+                    <h3>Chất Lượng Đỉnh Cao</h3>
+                    <p>100% sản phẩm chính hãng, nhập khẩu trực tiếp. Cam kết chất lượng và bảo hành đầy đủ từ nhà sản
+                        xuất.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Bảo Hành Tốt</h3>
-                    <p>Chính sách bảo hành uy tín, hỗ trợ khách hàng 24/7.</p>
+                    <h3>Bảo Hành Uy Tín</h3>
+                    <p>Chính sách bảo hành uy tín, đổi trả trong 7 ngày. Hỗ trợ khách hàng nhiệt tình 24/7 qua hotline
+                        và chat.</p>
                 </div>
             </div>
         </div>
@@ -647,19 +1117,19 @@
         <div class="container">
             <div class="section-title">
                 <h2>Sản Phẩm Nổi Bật</h2>
-                <p>Những sản phẩm được yêu thích nhất</p>
+                <p>Những sản phẩm công nghệ được yêu thích và đánh giá cao nhất</p>
             </div>
             <div class="products-grid">
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="product-badge">HOT</span>
+                        <span class="product-badge">HOT 🔥</span>
                         📱
                     </div>
                     <div class="product-info">
                         <div class="product-category">Smartphone</div>
                         <h3>Smartphone Pro Max</h3>
-                        <p>Màn hình OLED 6.7", chip xử lý mạnh mẽ, camera 108MP chụp ảnh siêu nét.</p>
+                        <p>Màn hình OLED 6.7", chip xử lý mạnh mẽ, camera 108MP chụp ảnh siêu nét, pin 5000mAh.</p>
                         <div class="product-footer">
                             <div class="product-price">15.990.000đ</div>
                             <button class="buy-button">Mua Ngay</button>
@@ -670,13 +1140,14 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="product-badge">NEW</span>
+                        <span class="product-badge">NEW ✨</span>
                         💻
                     </div>
                     <div class="product-info">
                         <div class="product-category">Laptop</div>
                         <h3>Laptop Gaming Ultra</h3>
-                        <p>RTX 4070, Intel i9, 32GB RAM, SSD 1TB. Hiệu năng đỉnh cao cho game thủ.</p>
+                        <p>RTX 4070, Intel i9 Gen 13, 32GB RAM, SSD 1TB. Hiệu năng đỉnh cao cho game thủ chuyên nghiệp.
+                        </p>
                         <div class="product-footer">
                             <div class="product-price">35.990.000đ</div>
                             <button class="buy-button">Mua Ngay</button>
@@ -687,13 +1158,14 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="product-badge">-20%</span>
+                        <span class="product-badge">-20% 💸</span>
                         🎧
                     </div>
                     <div class="product-info">
                         <div class="product-category">Audio</div>
                         <h3>Tai Nghe Premium ANC</h3>
-                        <p>Chống ồn chủ động, âm thanh Hi-Res, pin 40 giờ. Trải nghiệm âm nhạc hoàn hảo.</p>
+                        <p>Chống ồn chủ động ANC, âm thanh Hi-Res, pin 40 giờ. Trải nghiệm âm nhạc hoàn hảo mọi lúc mọi
+                            nơi.</p>
                         <div class="product-footer">
                             <div class="product-price">4.990.000đ</div>
                             <button class="buy-button">Mua Ngay</button>
@@ -708,8 +1180,8 @@
                     </div>
                     <div class="product-info">
                         <div class="product-category">Smartwatch</div>
-                        <h3>Đồng Hồ Thông Minh</h3>
-                        <p>Theo dõi sức khỏe toàn diện, GPS, chống nước 50m, pin 7 ngày.</p>
+                        <h3>Đồng Hồ Thông Minh Pro</h3>
+                        <p>Theo dõi sức khỏe toàn diện, GPS tích hợp, chống nước 50m, pin 7 ngày sử dụng liên tục.</p>
                         <div class="product-footer">
                             <div class="product-price">7.990.000đ</div>
                             <button class="buy-button">Mua Ngay</button>
@@ -720,13 +1192,14 @@
                 <!-- Product 5 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="product-badge">HOT</span>
+                        <span class="product-badge">HOT 🔥</span>
                         📷
                     </div>
                     <div class="product-info">
                         <div class="product-category">Camera</div>
-                        <h3>Máy Ảnh Mirrorless</h3>
-                        <p>50MP, quay 8K, chống rung 5 trục. Công cụ hoàn hảo cho nhiếp ảnh gia.</p>
+                        <h3>Máy Ảnh Mirrorless 4K</h3>
+                        <p>Cảm biến 50MP, quay video 8K, chống rung 5 trục IBIS. Công cụ hoàn hảo cho nhiếp ảnh gia
+                            chuyên nghiệp.</p>
                         <div class="product-footer">
                             <div class="product-price">45.990.000đ</div>
                             <button class="buy-button">Mua Ngay</button>
@@ -741,8 +1214,9 @@
                     </div>
                     <div class="product-info">
                         <div class="product-category">Monitor</div>
-                        <h3>Màn Hình 4K Gaming</h3>
-                        <p>32 inch 4K, 144Hz, HDR10, thời gian phản hồi 1ms. Hình ảnh sắc nét.</p>
+                        <h3>Màn Hình 4K Gaming Pro</h3>
+                        <p>32 inch 4K UHD, 144Hz, HDR10, thời gian phản hồi 1ms. Hình ảnh sắc nét, màu sắc chân thực
+                            tuyệt đối.</p>
                         <div class="product-footer">
                             <div class="product-price">12.990.000đ</div>
                             <button class="buy-button">Mua Ngay</button>
@@ -753,16 +1227,65 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Khách Hàng Nói Gì</h2>
+                <p>Hàng nghìn khách hàng tin tưởng và hài lòng với sản phẩm của chúng tôi</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Sản phẩm chất lượng tuyệt vời, giao hàng nhanh chóng. Đội ngũ hỗ trợ
+                        rất nhiệt tình và chuyên nghiệp. Tôi rất hài lòng với trải nghiệm mua sắm!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">N</div>
+                        <div class="author-info">
+                            <h4>Nguyễn Văn An</h4>
+                            <p>CEO, Tech Startup</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Giá cả hợp lý, sản phẩm chính hãng 100%. Tôi đã mua nhiều sản phẩm ở
+                        đây và chưa bao giờ thất vọng. Đây là địa chỉ tin cậy cho công nghệ!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">T</div>
+                        <div class="author-info">
+                            <h4>Trần Thị Bình</h4>
+                            <p>Graphic Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Dịch vụ sau bán hàng tuyệt vời! Khi có vấn đề, đội ngũ luôn sẵn sàng hỗ
+                        trợ và giải quyết nhanh chóng. Tôi sẽ giới thiệu cho bạn bè!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">L</div>
+                        <div class="author-info">
+                            <h4>Lê Minh Châu</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Sẵn Sàng Nâng Cấp Công Nghệ?</h2>
-                <p>Đăng ký ngay hôm nay để nhận ưu đãi độc quyền và thông tin sản phẩm mới nhất</p>
-                <div class="cta-buttons">
-                    <a href="#" class="cta-primary">Đăng Ký Ngay</a>
-                    <a href="#" class="cta-secondary">Tìm Hiểu Thêm</a>
-                </div>
+        <div class="cta-content">
+            <h2>Sẵn Sàng Nâng Cấp Công Nghệ?</h2>
+            <p>Đăng ký ngay hôm nay để nhận ưu đãi độc quyền lên đến 30% và cập nhật thông tin sản phẩm mới nhất từ
+                TechStore</p>
+            <div class="cta-buttons-bottom">
+                <a href="#" class="cta-primary">🎁 Đăng Ký Nhận Ưu Đãi</a>
+                <a href="#products" class="cta-secondary-btn">📱 Xem Sản Phẩm</a>
             </div>
         </div>
     </section>
@@ -771,25 +1294,26 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Về Chúng Tôi</h3>
-                <p>TechStore - Điểm đến tin cậy cho mọi sản phẩm công nghệ cao cấp. Chúng tôi cam kết mang đến trải nghiệm mua sắm tuyệt vời nhất.</p>
+                <h3>TechStore Premium ✨</h3>
+                <p>Điểm đến tin cậy cho mọi sản phẩm công nghệ cao cấp. Chúng tôi cam kết mang đến trải nghiệm mua sắm
+                    tuyệt vời nhất cho khách hàng.</p>
             </div>
             <div class="footer-section">
-                <h3>Liên Kết</h3>
+                <h3>Liên Kết Nhanh</h3>
                 <ul>
-                    <li><a href="#">Trang Chủ</a></li>
-                    <li><a href="#">Sản Phẩm</a></li>
-                    <li><a href="#">Về Chúng Tôi</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
+                    <li><a href="#home">🏠 Trang Chủ</a></li>
+                    <li><a href="#products">🛍️ Sản Phẩm</a></li>
+                    <li><a href="#features">⭐ Về Chúng Tôi</a></li>
+                    <li><a href="#contact">📞 Liên Hệ</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Hỗ Trợ</h3>
+                <h3>Hỗ Trợ Khách Hàng</h3>
                 <ul>
-                    <li><a href="#">Câu Hỏi Thường Gặp</a></li>
-                    <li><a href="#">Chính Sách Bảo Hành</a></li>
-                    <li><a href="#">Chính Sách Đổi Trả</a></li>
-                    <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                    <li><a href="#">❓ Câu Hỏi Thường Gặp</a></li>
+                    <li><a href="#">🛡️ Chính Sách Bảo Hành</a></li>
+                    <li><a href="#">🔄 Chính Sách Đổi Trả</a></li>
+                    <li><a href="#">📖 Hướng Dẫn Mua Hàng</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -798,12 +1322,14 @@
                     <li>📧 info@techstore.vn</li>
                     <li>📱 0123 456 789</li>
                     <li>📍 Hà Nội, Việt Nam</li>
+                    <li>⏰ 8:00 - 22:00 hàng ngày</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 TechStore. All rights reserved.</p>
+            <p>&copy; 2026 TechStore Premium. Made with ❤️ in Vietnam</p>
         </div>
     </footer>
 </body>
+
 </html>
